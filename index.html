@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portal Berita | Robotik MTsN 2 Pasuruan</title>
+  <title>Ekstrakurikuler Robotic MTsN 2 Pasuruan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-body: #090d16;
@@ -16,6 +16,7 @@
       --text-muted: #9ca3af;
       --primary: #10b981;
       --primary-dark: #059669;
+      --accent: #34d399;
       --border: #374151;
     }
 
@@ -24,9 +25,14 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg-body);
+      background-image:
+        radial-gradient(circle at 8% 15%, rgba(16, 185, 129, 0.10) 0%, transparent 40%),
+        radial-gradient(circle at 92% 85%, rgba(52, 211, 153, 0.08) 0%, transparent 40%);
       color: var(--text-main);
       line-height: 1.6;
     }
+
+    h1, h2, h3, .brand-font { font-family: 'Sora', sans-serif; }
 
     header {
       background: rgba(17, 24, 39, 0.85);
@@ -44,19 +50,37 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .logo {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 800;
       color: var(--primary);
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 8px;
+      letter-spacing: -0.3px;
     }
 
     .logo span { color: #fff; }
+
+    nav.top-nav {
+      display: flex;
+      gap: 22px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    nav.top-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav.top-nav a:hover { color: var(--accent); }
 
     main {
       max-width: 1200px;
@@ -65,28 +89,111 @@
     }
 
     .hero-banner {
-      background: linear-gradient(135deg, #065f46, #047857);
-      border-radius: 16px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+      background: linear-gradient(135deg, #065f46, #047857, #0d9488);
+      border-radius: 20px;
+      padding: 44px 36px;
+      margin-bottom: 36px;
+      box-shadow: 0 15px 35px rgba(16, 185, 129, 0.25);
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-banner h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #a7f3d0;
+      background: rgba(3, 7, 18, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .hero-banner h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
     .hero-banner p { font-size: 15px; color: #d1fae5; max-width: 700px; }
 
     .section-title {
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 700;
       margin-bottom: 20px;
       border-left: 4px solid var(--primary);
       padding-left: 12px;
     }
 
+    /* Dashboard */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-bottom: 44px;
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .stat-value {
+      font-family: 'Sora', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
     .news-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
+      margin-bottom: 48px;
     }
 
     .news-card {
@@ -161,6 +268,130 @@
 
     .read-more-btn:hover {
       background: var(--primary-dark);
+    }
+
+    /* Formulir Pendaftaran */
+    .register-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 32px;
+    }
+
+    .register-info h2 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .register-info p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .register-info ul {
+      list-style: none;
+      font-size: 13.5px;
+      color: #d1fae5;
+    }
+
+    .register-info li {
+      margin-bottom: 8px;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .register-info li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    form.register-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 11px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .honeypot-field { position: absolute; left: -9999px; }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      border: none;
+      padding: 13px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .submit-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .form-status {
+      font-size: 13.5px;
+      font-weight: 600;
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .form-status.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.12);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.3);
     }
 
     .modal-backdrop {
@@ -246,26 +477,118 @@
       color: var(--text-muted);
       font-size: 13px;
     }
+
+    @media (max-width: 720px) {
+      .register-section { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-banner h1 { font-size: 26px; }
+    }
   </style>
 </head>
 <body>
 
   <header>
     <div class="top-bar">
-      <a href="#" class="logo">🤖 Robotik <span>MTsN 2 Pasuruan</span></a>
-      <div style="font-size: 13px; color: var(--text-muted);">Ekskul Inovatif & Kreatif</div>
+      <a href="#" class="logo">🤖 Robotic <span>MTsN 2 Pasuruan</span></a>
+      <nav class="top-nav">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#berita">Berita</a>
+        <a href="#daftar">Daftar</a>
+      </nav>
     </div>
   </header>
 
   <main>
     <div class="hero-banner">
-      <h1>Portal Kegiatan Robotik MTsN 2 Pasuruan</h1>
+      <span class="hero-eyebrow">Ekstrakurikuler Sains & Teknologi</span>
+      <h1>EXTRAKURIKULER ROBOTIC MTSN2 PASURUAN</h1>
       <p>Dokumentasi lengkap perakitan, pemrograman sensor line follower, hingga teknik soldering komponen elektronik oleh siswa-siswi berprestasi.</p>
     </div>
 
-    <div class="section-title">Daftar Berita & Kegiatan</div>
+    <div id="dashboard" class="section-title">Dashboard Ekstrakurikuler</div>
+    <div class="dashboard-grid">
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <div class="stat-value">42</div>
+          <div class="stat-label">Anggota Aktif</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <div>
+          <div class="stat-value">5</div>
+          <div class="stat-label">Kegiatan Bulan Ini</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 6h3a2 2 0 0 1-2 2M7 6H4a2 2 0 0 0 2 2"/></svg>
+        </div>
+        <div>
+          <div class="stat-value">7</div>
+          <div class="stat-label">Prestasi & Piala</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <div class="stat-value">2.7 j</div>
+          <div class="stat-label">Jam Latihan / Minggu</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="berita" class="section-title">Daftar Berita & Kegiatan</div>
 
     <div class="news-grid" id="newsGrid"></div>
+
+    <div id="daftar" class="section-title">Formulir Pendaftaran Anggota</div>
+    <div class="register-section">
+      <div class="register-info">
+        <h2>Gabung Bersama Kami</h2>
+        <p>Tertarik jadi bagian dari tim robotik MTsN 2 Pasuruan? Isi formulir di samping, data pendaftaran akan otomatis diteruskan ke panitia.</p>
+        <ul>
+          <li>Terbuka untuk seluruh siswa/siswi</li>
+          <li>Jam ekstra: 12.20 - 15.00 WIB</li>
+          <li>Tanpa biaya pendaftaran</li>
+        </ul>
+      </div>
+      <form class="register-form" id="registerForm" name="pendaftaran-anggota" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="pendaftaran-anggota" />
+        <input type="hidden" name="tujuan" value="aditsukamieayam379@gmail.com" />
+        <p class="honeypot-field"><label>Jangan diisi: <input name="bot-field" /></label></p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nama">Nama Lengkap</label>
+            <input type="text" id="nama" name="nama" required placeholder="Nama lengkap">
+          </div>
+          <div class="form-group">
+            <label for="kelas">Kelas</label>
+            <input type="text" id="kelas" name="kelas" required placeholder="Contoh: 9E">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Alamat Email</label>
+          <input type="email" id="email" name="email" required placeholder="nama@email.com">
+        </div>
+        <div class="form-group">
+          <label for="whatsapp">Nomor WhatsApp</label>
+          <input type="tel" id="whatsapp" name="whatsapp" required placeholder="08xxxxxxxxxx">
+        </div>
+
+        <button type="submit" class="submit-btn">Kirim Pendaftaran</button>
+        <p class="form-note">Data akan dikirim ke panitia ekstrakurikuler robotik.</p>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+    </div>
   </main>
 
   <div class="modal-backdrop" id="newsModal">
@@ -280,7 +603,7 @@
   </div>
 
   <footer>
-    <p>&copy; 2026 Ekstrakurikuler Robotik MTsN 2 Pasuruan. All Rights Reserved.</p>
+    <p>&copy; 2026 Ekstrakurikuler Robotic MTsN 2 Pasuruan. All Rights Reserved.</p>
   </footer>
 
   <script>
@@ -355,40 +678,4 @@
         card.innerHTML = `
           <img src="${item.image}" alt="${item.title}" class="card-img">
           <div class="card-body">
-            <span class="badge">${item.category}</span>
-            <h3 class="card-title">${item.title}</h3>
-            <p class="card-snippet">${item.snippet}</p>
-            <button class="read-more-btn" onclick="openArticle(${item.id})">Baca Selengkapnya →</button>
-          </div>
-        `;
-        gridEl.appendChild(card);
-      });
-    }
-
-    window.openArticle = function(id) {
-      const article = articles.find(a => a.id === id);
-      if (!article) return;
-
-      modalImg.src = article.image;
-      modalBadge.textContent = article.category;
-      modalTitle.textContent = article.title;
-      modalMeta.textContent = `${article.date} • Oleh ${article.author}`;
-      modalText.textContent = article.content;
-
-      modalEl.style.display = 'flex';
-    }
-
-    closeModalBtn.addEventListener('click', () => {
-      modalEl.style.display = 'none';
-    });
-
-    modalEl.addEventListener('click', (e) => {
-      if (e.target === modalEl) {
-        modalEl.style.display = 'none';
-      }
-    });
-
-    renderNews();
-  </script>
-</body>
-</html>
+            <span class="b
