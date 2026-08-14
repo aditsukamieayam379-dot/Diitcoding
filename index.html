@@ -1,871 +1,1028 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ekstrakurikuler Robotic MTsN 2 Pasuruan</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-body: #090d16;
-      --bg-surface: #111827;
-      --bg-card: #1f2937;
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --primary: #10b981;
-      --primary-dark: #059669;
-      --accent: #34d399;
-      --border: #374151;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apel Hari Pramuka MTsN 2 Pasuruan</title>
+
+<style>
+:root{
+    --hijau:#173e27;
+    --hijau2:#28633d;
+    --emas:#d9a62e;
+    --merah:#a9232b;
+    --cream:#f5f1e5;
+    --putih:#fffdf8;
+    --text:#172219;
+    --muted:#687267;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(217,166,46,.15),transparent 25%),
+        radial-gradient(circle at 90% 90%,rgba(40,99,61,.15),transparent 25%),
+        var(--cream);
+    color:var(--text);
+    line-height:1.7;
+}
+
+/* PROGRESS */
+.progress{
+    position:fixed;
+    top:0;
+    left:0;
+    height:4px;
+    width:0;
+    background:linear-gradient(90deg,#d9a62e,#fff0a5,#a9232b);
+    z-index:9999;
+}
+
+/* NAVBAR */
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(23,62,39,.96);
+    backdrop-filter:blur(12px);
+    color:white;
+    box-shadow:0 5px 25px rgba(0,0,0,.15);
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    padding:13px 25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:bold;
+    font-size:17px;
+}
+
+.logo-icon{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#f0c34e,#a87812);
+    color:#173e27;
+    font-size:22px;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.nav button{
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.1);
+    color:white;
+    padding:9px 13px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* HERO */
+.hero{
+    max-width:1200px;
+    margin:30px auto;
+    padding:0 20px;
+}
+
+.hero-box{
+    position:relative;
+    min-height:570px;
+    overflow:hidden;
+    border-radius:30px;
+    box-shadow:0 25px 60px rgba(0,0,0,.2);
+}
+
+.hero-image{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(90deg,
+        rgba(8,32,18,.92),
+        rgba(8,32,18,.58),
+        rgba(8,32,18,.05)),
+        linear-gradient(0deg,rgba(0,0,0,.5),transparent);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:800px;
+    padding:100px 65px;
+    color:white;
+}
+
+.label{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:30px;
+    background:rgba(217,166,46,.2);
+    border:1px solid rgba(255,220,100,.5);
+    color:#ffe59a;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:clamp(40px,6vw,72px);
+    line-height:1.05;
+    margin:22px 0;
+    letter-spacing:-3px;
+}
+
+.hero p{
+    font-size:18px;
+    color:#edf5ee;
+}
+
+.meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:25px;
+}
+
+.meta span{
+    padding:8px 13px;
+    border-radius:30px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.18);
+    font-size:13px;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:10px 20px 80px;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 310px;
+    gap:28px;
+}
+
+/* ARTICLE */
+.article{
+    background:var(--putih);
+    border:1px solid rgba(23,62,39,.1);
+    border-radius:25px;
+    padding:45px;
+    box-shadow:0 15px 45px rgba(23,62,39,.08);
+}
+
+.article h2{
+    font-size:30px;
+    line-height:1.2;
+    margin:42px 0 15px;
+}
+
+.article h2:first-child{
+    margin-top:0;
+}
+
+.article p{
+    margin:15px 0;
+}
+
+.lead{
+    font-size:20px;
+    font-weight:600;
+}
+
+.dropcap:first-letter{
+    float:left;
+    font-size:70px;
+    line-height:.8;
+    padding-right:10px;
+    color:var(--hijau2);
+    font-weight:900;
+}
+
+/* STATISTIC */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:30px 0;
+}
+
+.stat{
+    padding:20px;
+    text-align:center;
+    background:#eee9d9;
+    border-radius:18px;
+}
+
+.stat strong{
+    display:block;
+    color:var(--hijau2);
+    font-size:28px;
+}
+
+.stat small{
+    color:var(--muted);
+}
+
+/* QUOTE */
+.quote{
+    margin:30px 0;
+    padding:25px;
+    border-left:5px solid var(--emas);
+    background:#eee9d9;
+    border-radius:0 18px 18px 0;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.quote small{
+    display:block;
+    margin-top:10px;
+    font-size:13px;
+    color:var(--muted);
+}
+
+/* GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:10px;
+    margin-top:25px;
+}
+
+.gallery figure{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    min-height:190px;
+    cursor:pointer;
+}
+
+.gallery figure:first-child{
+    grid-row:span 2;
+    min-height:390px;
+}
+
+.gallery img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.gallery figure:hover img{
+    transform:scale(1.08);
+}
+
+.gallery figcaption{
+    position:absolute;
+    bottom:10px;
+    left:10px;
+    right:10px;
+    padding:8px 10px;
+    color:white;
+    background:rgba(0,0,0,.55);
+    border-radius:10px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* TIMELINE */
+.timeline{
+    position:relative;
+    padding-left:30px;
+    margin-top:25px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:7px;
+    top:5px;
+    bottom:5px;
+    width:3px;
+    background:var(--emas);
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:25px;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-29px;
+    top:7px;
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    background:var(--emas);
+}
+
+.timeline-item strong{
+    display:block;
+    color:var(--hijau2);
+}
+
+/* SIDEBAR */
+.sidebar{
+    position:sticky;
+    top:85px;
+    height:max-content;
+}
+
+.card{
+    background:var(--putih);
+    padding:22px;
+    border-radius:22px;
+    margin-bottom:15px;
+    box-shadow:0 10px 30px rgba(23,62,39,.07);
+}
+
+.card h3{
+    margin-bottom:12px;
+}
+
+.toc a{
+    display:block;
+    padding:8px 0;
+    border-bottom:1px dashed #ddd;
+    color:var(--muted);
+    text-decoration:none;
+}
+
+.toc a:hover{
+    color:var(--hijau2);
+}
+
+.quick{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.quick button{
+    border:0;
+    padding:12px 8px;
+    border-radius:12px;
+    background:#eee9d9;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* TAG */
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:25px;
+}
+
+.tag{
+    background:#eee9d9;
+    color:var(--muted);
+    padding:7px 11px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+    background:var(--hijau);
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+/* LIGHTBOX */
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.9);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:5000;
+    padding:30px;
+}
+
+.lightbox.active{
+    display:flex;
+}
+
+.lightbox img{
+    max-width:95%;
+    max-height:90%;
+    border-radius:18px;
+}
+
+.close{
+    position:absolute;
+    right:25px;
+    top:20px;
+    width:45px;
+    height:45px;
+    border:0;
+    border-radius:50%;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* DARK MODE */
+.dark{
+    --cream:#0d1711;
+    --putih:#142118;
+    --text:#edf5ee;
+    --muted:#aebdaf;
+}
+
+.dark .stat,
+.dark .quote,
+.dark .quick button,
+.dark .tag{
+    background:#1b2b20;
+}
+
+.dark .article{
+    border-color:rgba(255,255,255,.08);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+    .layout{
+        grid-template-columns:1fr;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-body);
-      background-image:
-        radial-gradient(circle at 8% 15%, rgba(16, 185, 129, 0.10) 0%, transparent 40%),
-        radial-gradient(circle at 92% 85%, rgba(52, 211, 153, 0.08) 0%, transparent 40%);
-      color: var(--text-main);
-      line-height: 1.6;
+    .sidebar{
+        display:none;
     }
 
-    h1, h2, h3, .brand-font { font-family: 'Sora', sans-serif; }
-
-    header {
-      background: rgba(17, 24, 39, 0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    .hero-box{
+        min-height:560px;
     }
 
-    .top-bar {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
+    .hero-content{
+        padding:80px 35px;
     }
 
-    .logo {
-      font-size: 19px;
-      font-weight: 800;
-      color: var(--primary);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      letter-spacing: -0.3px;
+    .gallery{
+        grid-template-columns:1fr 1fr;
     }
 
-    .logo span { color: #fff; }
+    .gallery figure:first-child{
+        grid-column:1/-1;
+        grid-row:auto;
+        min-height:300px;
+    }
+}
 
-    nav.top-nav {
-      display: flex;
-      gap: 22px;
-      font-size: 13px;
-      font-weight: 600;
+@media(max-width:600px){
+
+    .nav{
+        padding:10px 14px;
     }
 
-    nav.top-nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
+    .logo span{
+        display:none;
     }
 
-    nav.top-nav a:hover { color: var(--accent); }
-
-    main {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
+    .hero{
+        padding:0 10px;
     }
 
-    .hero-banner {
-      background: linear-gradient(135deg, #065f46, #047857, #0d9488);
-      border-radius: 20px;
-      padding: 44px 36px;
-      margin-bottom: 36px;
-      box-shadow: 0 15px 35px rgba(16, 185, 129, 0.25);
-      position: relative;
-      overflow: hidden;
+    .hero-content{
+        padding:65px 25px;
     }
 
-    .hero-banner::after {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 220px; height: 220px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 50%;
+    .hero h1{
+        font-size:42px;
+        letter-spacing:-2px;
     }
 
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #a7f3d0;
-      background: rgba(3, 7, 18, 0.3);
-      padding: 6px 14px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-      border: 1px solid rgba(255,255,255,0.15);
+    .article{
+        padding:25px 20px;
     }
 
-    .hero-banner h1 {
-      font-size: 34px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
-      line-height: 1.2;
+    .stats{
+        grid-template-columns:1fr;
     }
 
-    .hero-banner p { font-size: 15px; color: #d1fae5; max-width: 700px; }
-
-    .section-title {
-      font-size: 21px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      border-left: 4px solid var(--primary);
-      padding-left: 12px;
+    .gallery{
+        grid-template-columns:1fr;
     }
 
-    /* Dashboard */
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-bottom: 44px;
+    .gallery figure,
+    .gallery figure:first-child{
+        min-height:260px;
+        grid-column:auto;
     }
-
-    .stat-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--primary);
-    }
-
-    .stat-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: rgba(16, 185, 129, 0.15);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .stat-value {
-      font-family: 'Sora', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.2;
-    }
-
-    .stat-label {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-
-    .news-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .news-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-      border-color: var(--primary);
-    }
-
-    .card-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      background: var(--bg-card);
-    }
-
-    .card-body {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .badge {
-      background: rgba(16, 185, 129, 0.15);
-      color: var(--primary);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      align-self: flex-start;
-      margin-bottom: 10px;
-    }
-
-    .card-title {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #fff;
-      line-height: 1.4;
-    }
-
-    .card-snippet {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      flex: 1;
-    }
-
-    .read-more-btn {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      text-align: center;
-      transition: background 0.2s;
-    }
-
-    .read-more-btn:hover {
-      background: var(--primary-dark);
-    }
-
-    /* Narahubung */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin-bottom: 48px;
-    }
-
-    .contact-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .contact-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--primary);
-    }
-
-    .contact-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 17px;
-      color: #fff;
-      flex-shrink: 0;
-    }
-
-    .contact-info { flex: 1; }
-
-    .contact-name {
-      font-size: 15.5px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 2px;
-    }
-
-    .contact-class {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .wa-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #fff;
-      text-decoration: none;
-      padding: 9px 14px;
-      border-radius: 9px;
-      font-weight: 600;
-      font-size: 12.5px;
-      transition: transform 0.2s;
-    }
-
-    .wa-btn:hover { transform: translateY(-2px); }
-
-    /* Formulir Pendaftaran */
-    .register-section {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px;
-      margin-bottom: 48px;
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 32px;
-    }
-
-    .register-info h2 {
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
-
-    .register-info p {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    .register-info ul {
-      list-style: none;
-      font-size: 13.5px;
-      color: #d1fae5;
-    }
-
-    .register-info li {
-      margin-bottom: 8px;
-      padding-left: 22px;
-      position: relative;
-    }
-
-    .register-info li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    form.register-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .form-group input {
-      width: 100%;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: #fff;
-      padding: 11px 14px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-family: inherit;
-      transition: border-color 0.2s;
-    }
-
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--primary);
-    }
-
-    .honeypot-field { position: absolute; left: -9999px; }
-
-    .submit-btn {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #fff;
-      border: none;
-      padding: 13px 20px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      margin-top: 4px;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .submit-btn:hover { opacity: 0.92; transform: translateY(-1px); }
-
-    .form-note {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .form-status {
-      font-size: 13.5px;
-      font-weight: 600;
-      display: none;
-      padding: 10px 14px;
-      border-radius: 8px;
-    }
-
-    .form-status.success {
-      display: block;
-      background: rgba(16, 185, 129, 0.12);
-      color: var(--accent);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-
-    .form-status.error {
-      display: block;
-      background: rgba(239, 68, 68, 0.12);
-      color: #fca5a5;
-      border: 1px solid rgba(239, 68, 68, 0.3);
-    }
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 7, 18, 0.85);
-      backdrop-filter: blur(8px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 20px;
-    }
-
-    .modal-content {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      width: 100%;
-      max-width: 680px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 30px;
-      position: relative;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.7);
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--bg-card);
-      border: none;
-      color: var(--text-muted);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .close-modal:hover { background: var(--border); color: #fff; }
-
-    .modal-img {
-      width: 100%;
-      max-height: 340px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .modal-title {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 12px;
-      color: #fff;
-    }
-
-    .modal-meta {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 12px;
-    }
-
-    .modal-body-text {
-      font-size: 15px;
-      color: #d1d5db;
-      line-height: 1.8;
-      white-space: pre-line;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      margin-top: 50px;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 13px;
-    }
-
-    @media (max-width: 720px) {
-      .register-section { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero-banner h1 { font-size: 26px; }
-    }
-  </style>
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <div class="top-bar">
-      <a href="#" class="logo">🤖 Robotic <span>MTsN 2 Pasuruan</span></a>
-      <nav class="top-nav">
-        <a href="#dashboard">Dashboard</a>
-        <a href="#berita">Berita</a>
-        <a href="#daftar">Daftar</a>
-      </nav>
-    </div>
-  </header>
+<div class="progress" id="progress"></div>
 
-  <main>
-    <div class="hero-banner">
-      <span class="hero-eyebrow">Ekstrakurikuler Sains & Teknologi</span>
-      <h1>EXTRAKURIKULER ROBOTIC MTSN2 PASURUAN</h1>
-      <p>Dokumentasi lengkap perakitan, pemrograman sensor line follower, hingga teknik soldering komponen elektronik oleh siswa-siswi berprestasi.</p>
+<!-- NAVBAR -->
+<nav class="navbar">
+<div class="nav">
+
+    <div class="logo">
+        <div class="logo-icon">⚜</div>
+        <span>BERITA MTsN 2 PASURUAN</span>
     </div>
 
-    <div id="dashboard" class="section-title">Dashboard Ekstrakurikuler</div>
-    <div class="dashboard-grid">
-      <div class="stat-card">
-        <div class="stat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <div>
-          <div class="stat-value">42</div>
-          <div class="stat-label">Anggota Aktif</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        </div>
-        <div>
-          <div class="stat-value">5</div>
-          <div class="stat-label">Kegiatan Bulan Ini</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 6h3a2 2 0 0 1-2 2M7 6H4a2 2 0 0 0 2 2"/></svg>
-        </div>
-        <div>
-          <div class="stat-value">7</div>
-          <div class="stat-label">Prestasi & Piala</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        </div>
-        <div>
-          <div class="stat-value">2.7 j</div>
-          <div class="stat-label">Jam Latihan / Minggu</div>
-        </div>
-      </div>
+    <div class="nav-buttons">
+        <button onclick="darkMode()">🌙</button>
+        <button onclick="shareArticle()">↗ Bagikan</button>
     </div>
 
-    <div id="berita" class="section-title">Daftar Berita & Kegiatan</div>
+</div>
+</nav>
 
-    <div class="news-grid" id="newsGrid"></div>
+<!-- HERO -->
+<section class="hero">
 
-    <div class="section-title">Narahubung</div>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-avatar">N</div>
-        <div class="contact-info">
-          <div class="contact-name">Nazar</div>
-          <div class="contact-class">Kelas 9E</div>
-          <a href="https://wa.me/6287741046760" target="_blank" rel="noopener" class="wa-btn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.76.46 3.48 1.34 5L2 22l5.16-1.35A9.96 9.96 0 0 0 12.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.15c-1.6 0-3.16-.43-4.52-1.24l-.32-.19-3.06.8.82-2.98-.21-.31A8.15 8.15 0 0 1 3.85 12c0-4.5 3.66-8.16 8.19-8.16 4.53 0 8.19 3.66 8.19 8.16 0 4.5-3.66 8.15-8.19 8.15z"/></svg>
-            Hubungi via WhatsApp
-          </a>
+<div class="hero-box">
+
+    <img
+        class="hero-image"
+        src="assets/foto-utama.jpg"
+        alt="Foto kegiatan Pramuka">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <span class="label">
+            🏕️ LIPUTAN PRAMUKA • 14 AGUSTUS 2026
+        </span>
+
+        <h1>
+            Apel Hari Pramuka MTsN 2 Pasuruan
+        </h1>
+
+        <p>
+            Semangat kepramukaan, kedisiplinan, kebersamaan,
+            dan cinta tanah air dalam peringatan Hari Pramuka.
+        </p>
+
+        <div class="meta">
+            <span>📍 Pandaan, Pasuruan</span>
+            <span>🇮🇩 Hari Pramuka</span>
+            <span>⏱️ 4 Menit Baca</span>
         </div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-avatar">F</div>
-        <div class="contact-info">
-          <div class="contact-name">Firdan</div>
-          <div class="contact-class">Kelas 9E</div>
-          <a href="https://wa.me/6289508047443" target="_blank" rel="noopener" class="wa-btn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.76.46 3.48 1.34 5L2 22l5.16-1.35A9.96 9.96 0 0 0 12.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.15c-1.6 0-3.16-.43-4.52-1.24l-.32-.19-3.06.8.82-2.98-.21-.31A8.15 8.15 0 0 1 3.85 12c0-4.5 3.66-8.16 8.19-8.16 4.53 0 8.19 3.66 8.19 8.16 0 4.5-3.66 8.15-8.19 8.15z"/></svg>
-            Hubungi via WhatsApp
-          </a>
-        </div>
-      </div>
+
     </div>
 
-    <div id="daftar" class="section-title">Formulir Pendaftaran Anggota</div>
-    <div class="register-section">
-      <div class="register-info">
-        <h2>Gabung Bersama Kami</h2>
-        <p>Tertarik jadi bagian dari tim robotik MTsN 2 Pasuruan? Isi formulir di samping, data pendaftaran akan otomatis diteruskan ke panitia.</p>
-        <ul>
-          <li>Terbuka untuk seluruh siswa/siswi</li>
-          <li>Jam ekstra: 12.20 - 15.00 WIB</li>
-          <li>Tanpa biaya pendaftaran</li>
-        </ul>
-      </div>
-      <form class="register-form" id="registerForm" name="pendaftaran-anggota" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="pendaftaran-anggota" />
-        <input type="hidden" name="tujuan" value="aditsukamieayam379@gmail.com" />
-        <p class="honeypot-field"><label>Jangan diisi: <input name="bot-field" /></label></p>
+</div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nama">Nama Lengkap</label>
-            <input type="text" id="nama" name="nama" required placeholder="Nama lengkap">
-          </div>
-          <div class="form-group">
-            <label for="kelas">Kelas</label>
-            <input type="text" id="kelas" name="kelas" required placeholder="Contoh: 9E">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">Alamat Email</label>
-          <input type="email" id="email" name="email" required placeholder="nama@email.com">
-        </div>
-        <div class="form-group">
-          <label for="whatsapp">Nomor WhatsApp</label>
-          <input type="tel" id="whatsapp" name="whatsapp" required placeholder="08xxxxxxxxxx">
-        </div>
+</section>
 
-        <button type="submit" class="submit-btn">Kirim Pendaftaran</button>
-        <p class="form-note">Data akan dikirim ke panitia ekstrakurikuler robotik.</p>
-        <div class="form-status" id="formStatus"></div>
-      </form>
-    </div>
-  </main>
+<!-- CONTENT -->
+<main class="container">
 
-  <div class="modal-backdrop" id="newsModal">
-    <div class="modal-content">
-      <button class="close-modal" id="closeModal">✕</button>
-      <img id="modalImg" class="modal-img" src="" alt="Foto Kegiatan">
-      <div id="modalBadge" class="badge">Kategori</div>
-      <h2 id="modalTitle" class="modal-title">Judul Berita</h2>
-      <div id="modalMeta" class="modal-meta">Tanggal • Penulis</div>
-      <div id="modalText" class="modal-body-text">Isi berita lengkap...</div>
-    </div>
-  </div>
+<div class="layout">
 
-  <footer>
-    <p>&copy; 2026 Ekstrakurikuler Robotic MTsN 2 Pasuruan. All Rights Reserved.</p>
-  </footer>
+<article class="article">
 
-  <script>
-    const articles = [
-      {
-        id: 1,
-        title: "Pelatihan Pemrograman & Kalibrasi Robot Line Follower",
-        category: "Praktik Pemrograman",
-        date: "13 Agustus 2026",
-        author: "Tim Media MTsN 2 Pasuruan",
-        image: "1000858388.jpg",
-        snippet: "Siswa anggota ekstrakurikuler robotik tampak antusias melakukan pengaturan pada papan arena line follower...",
-        content: "Siswa-siswi anggota ekstrakurikuler robotik MTsN 2 Pasuruan menunjukkan antusiasme tinggi saat mengikuti sesi pelatihan pemrograman dan kalibrasi robot line follower.\n\nDalam kegiatan ini, para siswa bekerja sama dalam kelompok untuk memastikan sensor robot dapat membaca garis hitam pada arena dengan presisi tinggi."
-      },
-      {
-        id: 2,
-        title: "Uji Coba Chassis dan Sistem Navigasi Arena Lintasan",
-        category: "Uji Coba Lapangan",
-        date: "12 Agustus 2026",
-        author: "Pembina Robotik",
-        image: "1000858391.jpg",
-        snippet: "Pengujian fungsionalitas chassis robot di atas jalur lintasan rumit untuk menguji kecepatan respons...",
-        content: "Fase pengujian atau uji coba lapangan merupakan salah satu tahap krusial dalam pembuatan robot. Di sini, para siswa menguji performa navigasi robot di atas lintasan berpola khusus."
-      },
-      {
-        id: 3,
-        title: "Teknik Dasar Soldering (Solder) Komponen Elektronik",
-        category: "Workshop Teknik",
-        date: "10 Agustus 2026",
-        author: "Instruktur Elektronika",
-        image: "1000858392.jpg",
-        snippet: "Pelatihan keterampilan menyolder kabel dan komponen pada rangkaian PCB menggunakan alat bantu...",
-        content: "Keterampilan merakit perangkat keras (hardware) menjadi nilai tambah bagi siswa MTsN 2 Pasuruan. Melalui workshop ini, peserta didik diajarkan teknik dasar penyahatan atau soldering yang benar dan aman."
-      },
-      {
-        id: 4,
-        title: "Diskusi Kelompok dan Analisis Perbaikan Sensor Robot",
-        category: "Problem Solving",
-        date: "8 Agustus 2026",
-        author: "Tim Robotik",
-        image: "1000858395.jpg",
-        snippet: "Anggota tim berdiskusi memecahkan masalah logika program dan letak sensor pada sasis robot...",
-        content: "Kerja tim sangat ditekankan dalam klub robotik MTsN 2 Pasuruan. Ketika menemui kendala teknis, para siswa terbiasa melakukan diskusi terbuka untuk mencari solusi bersama."
-      },
-      {
-        id: 5,
-        title: "Perakitan Modul Suara dan Breadboard Elektronika",
-        category: "Rangkaian Elektronik",
-        date: "5 Agustus 2026",
-        author: "Laboratorium Komputer & Sains",
-        image: "1000858127.jpg",
-        snippet: "Eksperimen penyusunan modul Micro SD card dan speaker mini pada papan breadboard...",
-        content: "Sebelum dipasang secara permanen ke bodi robot, rangkaian elektronik diuji terlebih dahulu menggunakan papan breadboard untuk melatih pemahaman siswa mengenai jalur pin input-output."
-      },
-      {
-        id: 6,
-        title: "Simulasi Persiapan Kompetisi Robotika Antar Sekolah Tingkat Kabupaten",
-        category: "Persiapan Lomba",
-        date: "3 Agustus 2026",
-        author: "Tim Media MTsN 2 Pasuruan",
-        image: "1000858388.jpg",
-        snippet: "Latihan simulasi pertandingan digelar untuk mengukur kesiapan tim menghadapi kompetisi robotika tingkat kabupaten...",
-        content: "Menjelang agenda kompetisi robotika antar sekolah tingkat kabupaten, anggota ekstrakurikuler robotik MTsN 2 Pasuruan menggelar simulasi pertandingan penuh guna mengukur kesiapan teknis maupun mental tim.\n\nSimulasi dilaksanakan layaknya kondisi lomba sesungguhnya, lengkap dengan sistem penghitungan waktu tempuh dan penilaian ketepatan lintasan. Pembina turut memberikan evaluasi langsung pada akhir sesi untuk mengidentifikasi kekurangan yang masih perlu diperbaiki sebelum hari perlombaan tiba."
-      },
-      {
-        id: 7,
-        title: "Pengenalan Dasar Internet of Things (IoT) untuk Pengembangan Robot Pintar",
-        category: "Materi Teori",
-        date: "1 Agustus 2026",
-        author: "Pembina Robotik MTsN 2 Pasuruan",
-        image: "1000858391.jpg",
-        snippet: "Materi teori seputar konsep dasar Internet of Things diperkenalkan sebagai bekal pengembangan robot generasi berikutnya...",
-        content: "Sebagai bekal pengembangan proyek robotik yang lebih kompleks, siswa diperkenalkan pada konsep dasar Internet of Things (IoT), yaitu teknologi yang memungkinkan perangkat elektronik saling terhubung dan bertukar data melalui jaringan internet.\n\nDalam sesi teori interaktif ini, pembina menjelaskan bagaimana modul konektivitas nirkabel dapat dimanfaatkan untuk memantau kondisi robot secara jarak jauh, mengirim data sensor secara real-time, hingga mengendalikan robot melalui aplikasi pada gawai."
-      },
-      {
-        id: 8,
-        title: "Kegiatan Perawatan Berkala dan Pengecekan Baterai Seluruh Unit Robot",
-        category: "Perawatan Alat",
-        date: "29 Juli 2026",
-        author: "Tim Robotik",
-        image: "1000858392.jpg",
-        snippet: "Perawatan rutin dilakukan untuk memastikan seluruh unit robot dan baterai tetap dalam kondisi prima sebelum digunakan kembali...",
-        content: "Merawat peralatan dengan baik merupakan bagian penting dari budaya disiplin di ekstrakurikuler robotik MTsN 2 Pasuruan. Setiap beberapa minggu sekali, seluruh anggota melakukan pengecekan menyeluruh terhadap kondisi fisik robot, kekencangan baut sasis, hingga kapasitas baterai yang digunakan sebagai sumber daya utama.\n\nKegiatan perawatan berkala ini bertujuan untuk mencegah kerusakan komponen secara mendadak saat robot sedang digunakan dalam sesi praktik maupun kompetisi."
-      }
-    ];
+<p class="lead dropcap">
+Peringatan Hari Pramuka menjadi momen penting untuk kembali
+menghidupkan semangat disiplin, tanggung jawab, persaudaraan,
+dan cinta tanah air. Semangat tersebut turut terasa dalam
+kegiatan kepramukaan MTsN 2 Pasuruan.
+</p>
 
-    const gridEl = document.getElementById('newsGrid');
-    const modalEl = document.getElementById('newsModal');
-    const closeModalBtn = document.getElementById('closeModal');
+<!-- STATISTIK -->
+<div class="stats">
 
-    const modalImg = document.getElementById('modalImg');
-    const modalBadge = document.getElementById('modalBadge');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalMeta = document.getElementById('modalMeta');
-    const modalText = document.getElementById('modalText');
+<div class="stat">
+<strong>65</strong>
+<small>Tahun Gerakan Pramuka</small>
+</div>
 
-    function renderNews() {
-      gridEl.innerHTML = '';
-      articles.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'news-card';
-        card.innerHTML = `
-          <img src="${item.image}" alt="${item.title}" class="card-img">
-          <div class="card-body">
-            <span class="badge">${item.category}</span>
-            <h3 class="card-title">${item.title}</h3>
-            <p class="card-snippet">${item.snippet}</p>
-            <button class="read-more-btn" onclick="openArticle(${item.id})">Baca Selengkapnya →</button>
-          </div>
-        `;
-        gridEl.appendChild(card);
-      });
+<div class="stat">
+<strong>14 Agustus</strong>
+<small>Hari Pramuka</small>
+</div>
+
+<div class="stat">
+<strong>4+</strong>
+<small>Dokumentasi Foto</small>
+</div>
+
+</div>
+
+<h2 id="suasana">
+Semangat yang Terlihat Sejak Awal
+</h2>
+
+<p>
+Kegiatan Hari Pramuka berlangsung dengan suasana yang penuh
+semangat. Para peserta mengenakan seragam Pramuka lengkap
+dengan setangan leher merah putih dan atribut kepramukaan.
+</p>
+
+<p>
+Kekompakan terlihat dari cara para anggota mengikuti kegiatan
+dan mengabadikan momen bersama. Senyum dan kebersamaan menjadi
+bagian menarik dari peringatan Hari Pramuka.
+</p>
+
+<div class="quote">
+
+“Pramuka bukan sekadar seragam dan kegiatan di lapangan,
+tetapi proses belajar untuk menjadi pribadi yang disiplin,
+mandiri, bertanggung jawab, dan mampu bekerja sama.”
+
+<small>
+— Semangat Hari Pramuka
+</small>
+
+</div>
+
+<h2 id="galeri">
+📸 Galeri Momen
+</h2>
+
+<p>
+Berikut dokumentasi kegiatan Hari Pramuka yang berhasil
+diabadikan.
+</p>
+
+<div class="gallery">
+
+<figure onclick="openImage(this)">
+<img src="assets/foto-utama.jpg"
+alt="Foto kelompok Pramuka">
+<figcaption>
+Foto bersama peserta Pramuka
+</figcaption>
+</figure>
+
+<figure onclick="openImage(this)">
+<img src="assets/foto-2.jpg"
+alt="Peserta Pramuka">
+<figcaption>
+Kebersamaan dengan pembina
+</figcaption>
+</figure>
+
+<figure onclick="openImage(this)">
+<img src="assets/foto-3.jpg"
+alt="Anggota Pramuka">
+<figcaption>
+Kompak dan percaya diri
+</figcaption>
+</figure>
+
+<figure onclick="openImage(this)">
+<img src="assets/foto-4.jpg"
+alt="Formasi Pramuka">
+<figcaption>
+Semangat Hari Pramuka
+</figcaption>
+</figure>
+
+</div>
+
+<h2 id="makna">
+Makna Hari Pramuka bagi Pelajar
+</h2>
+
+<p>
+Pramuka mengajarkan banyak nilai positif kepada pelajar.
+Kegiatan dalam Pramuka dapat melatih kedisiplinan, kerja sama,
+kemandirian, kepemimpinan, dan rasa tanggung jawab.
+</p>
+
+<p>
+Nilai-nilai tersebut tidak hanya berguna ketika berada di
+lapangan, tetapi juga dapat diterapkan dalam kehidupan
+sehari-hari, baik di sekolah maupun di lingkungan masyarakat.
+</p>
+
+<h2 id="rangkaian">
+🏕️ Rangkaian Momen
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<strong>Persiapan</strong>
+Peserta mempersiapkan seragam dan perlengkapan Pramuka.
+</div>
+
+<div class="timeline-item">
+<strong>Apel Hari Pramuka</strong>
+Peserta mengikuti kegiatan dengan tertib dan penuh semangat.
+</div>
+
+<div class="timeline-item">
+<strong>Kebersamaan</strong>
+Peserta dan pembina mengabadikan momen bersama.
+</div>
+
+<div class="timeline-item">
+<strong>Refleksi</strong>
+Nilai disiplin, tanggung jawab, dan persaudaraan terus
+dibawa dalam kehidupan sehari-hari.
+</div>
+
+</div>
+
+<h2 id="penutup">
+Menjaga Semangat Pramuka
+</h2>
+
+<p>
+Hari Pramuka bukan hanya sebuah peringatan tahunan.
+Momentum ini menjadi pengingat bahwa generasi muda memiliki
+peran penting dalam menjaga persatuan, kedisiplinan,
+kepedulian, dan semangat pengabdian.
+</p>
+
+<p>
+Melalui kegiatan positif dan penuh kebersamaan, semangat
+kepramukaan diharapkan terus tumbuh di lingkungan sekolah.
+</p>
+
+<p>
+<strong>
+Selamat Hari Pramuka! 🇮🇩<br>
+Salam Pramuka! ⚜️
+</strong>
+</p>
+
+<div class="tags">
+<span class="tag">#HariPramuka</span>
+<span class="tag">#MTsN2Pasuruan</span>
+<span class="tag">#Pramuka</span>
+<span class="tag">#Pasuruan</span>
+<span class="tag">#SalamPramuka</span>
+</div>
+
+</article>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+<div class="card">
+
+<h3>📖 Navigasi Artikel</h3>
+
+<div class="toc">
+
+<a href="#suasana">
+Semangat Kegiatan
+</a>
+
+<a href="#galeri">
+Galeri Momen
+</a>
+
+<a href="#makna">
+Makna Hari Pramuka
+</a>
+
+<a href="#rangkaian">
+Rangkaian Momen
+</a>
+
+<a href="#penutup">
+Penutup
+</a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>⚡ Fitur Cepat</h3>
+
+<div class="quick">
+
+<button onclick="fontSize(1)">
+A+ Besarkan
+</button>
+
+<button onclick="fontSize(-1)">
+A− Kecilkan
+</button>
+
+<button onclick="window.print()">
+🖨 Cetak
+</button>
+
+<button onclick="shareArticle()">
+↗ Bagikan
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>🏕️ Tentang Artikel</h3>
+
+<p style="font-size:13px;color:var(--muted)">
+Artikel dokumentasi kegiatan Hari Pramuka
+MTsN 2 Pasuruan dengan desain bergaya portal
+berita modern.
+</p>
+
+</div>
+
+</aside>
+
+</div>
+
+</main>
+
+<footer>
+
+<strong>
+BERITA MTsN 2 PASURUAN
+</strong>
+
+<br>
+
+Artikel Dokumentasi Hari Pramuka • 14 Agustus 2026
+
+<br><br>
+
+⚜️ Salam Pramuka ⚜️
+
+</footer>
+
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+
+<button class="close" onclick="closeImage()">
+×
+</button>
+
+<img id="lightboxImage">
+
+</div>
+
+
+<script>
+
+/* DARK MODE */
+
+function darkMode(){
+
+    document.body.classList.toggle("dark");
+
+}
+
+
+/* FONT SIZE */
+
+let scale = 1;
+
+function fontSize(value){
+
+    scale += value * 0.05;
+
+    if(scale < .9) scale = .9;
+
+    if(scale > 1.2) scale = 1.2;
+
+    document.querySelector(".article").style.fontSize =
+        (16 * scale) + "px";
+
+}
+
+
+/* SHARE */
+
+function shareArticle(){
+
+    const data = {
+        title:"Apel Hari Pramuka MTsN 2 Pasuruan",
+        text:"Apel Hari Pramuka MTsN 2 Pasuruan",
+        url:window.location.href
+    };
+
+    if(navigator.share){
+
+        navigator.share(data);
+
+    }else{
+
+        navigator.clipboard.writeText(
+            window.location.href
+        );
+
+        alert("Link artikel berhasil disalin!");
+
     }
 
-    window.openArticle = function(id) {
-      const article = articles.find(a => a.id === id);
-      if (!article) return;
+}
 
-      modalImg.src = article.image;
-      modalBadge.textContent = article.category;
-      modalTitle.textContent = article.title;
-      modalMeta.textContent = `${article.date} • Oleh ${article.author}`;
-      modalText.textContent = article.content;
 
-      modalEl.style.display = 'flex';
+/* LIGHTBOX */
+
+function openImage(element){
+
+    const image =
+        element.querySelector("img");
+
+    document.getElementById(
+        "lightboxImage"
+    ).src = image.src;
+
+    document.getElementById(
+        "lightbox"
+    ).classList.add("active");
+
+}
+
+
+function closeImage(){
+
+    document.getElementById(
+        "lightbox"
+    ).classList.remove("active");
+
+}
+
+
+/* ESCAPE */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+            closeImage();
+        }
+
     }
+);
 
-    closeModalBtn.addEventListener('click', () => {
-      modalEl.style.display = 'none';
-    });
 
-    modalEl.addEventListener('click', (e) => {
-      if (e.target === modalEl) {
-        modalEl.style.display = 'none';
-      }
-    });
+/* READING PROGRESS */
 
-    renderNews();
+window.addEventListener(
+    "scroll",
+    function(){
 
-    // Kirim formulir pendaftaran ke Netlify Forms (tanpa reload halaman)
-    const registerForm = document.getElementById('registerForm');
-    const formStatus = document.getElementById('formStatus');
+        const height =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
 
-    function encodeFormData(form) {
-      const data = new FormData(form);
-      return Array.from(data.entries())
-        .map(([k, v]) => encodeURIComponent(k) + '=' + encodeURIComponent(v))
-        .join('&');
+        const progress =
+            (window.scrollY / height) * 100;
+
+        document.getElementById(
+            "progress"
+        ).style.width = progress + "%";
+
     }
+);
 
-    registerForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodeFormData(registerForm)
-      })
-        .then(() => {
-          formStatus.textContent = 'Pendaftaran berhasil dikirim. Terima kasih!';
-          formStatus.className = 'form-status success';
-          registerForm.reset();
-        })
-        .catch(() => {
-          formStatus.textContent = 'Gagal mengirim. Coba lagi atau hubungi panitia langsung.';
-          formStatus.className = 'form-status error';
-        });
-    });
-  </script>
+</script>
+
 </body>
 </html>
