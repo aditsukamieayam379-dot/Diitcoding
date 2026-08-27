@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pemilu Ketua & Wakil Ketua Paskibra Koranda &mdash; Paslon 03</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --merah:#c0272d;
+    --merah-tua:#7e1418;
+    --hitam:#181410;
+    --kertas:#f4ecd8;
+    --kertas-terang:#fbf6e9;
+    --emas:#b2872f;
+    --abu:#8a8071;
+    --garis: rgba(24,20,16,0.15);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--kertas);
+    color:var(--hitam);
+    font-family:'Source Serif 4', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--merah); color:var(--kertas-terang);}
+
+  /* ===== TOP BAR INSTANSI ===== */
+  .instansi{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 24px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    background:var(--hitam);
+    color:var(--kertas-terang);
+  }
+  .instansi span:last-child{color:var(--emas);}
+  .strip-bendera{
+    height:5px;
+    background:linear-gradient(90deg, var(--merah) 50%, var(--kertas-terang) 50%);
+    background-size:24px 100%;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:radial-gradient(circle at 50% -10%, #2a1213, var(--hitam) 62%);
+    color:var(--kertas-terang);
+    text-align:center;
+    padding:70px 20px 40px;
+  }
+  .bidik{
+    position:absolute;
+    border:1px solid rgba(178,135,47,0.35);
+    border-radius:50%;
+    left:50%; top:38%;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+  }
+  .bidik.b1{width:900px; height:900px;}
+  .bidik.b2{width:640px; height:640px; border-color:rgba(178,135,47,0.22);}
+  .bidik::before, .bidik::after{
+    content:"";
+    position:absolute;
+    background:rgba(178,135,47,0.3);
+  }
+  .bidik::before{ top:50%; left:-14px; right:-14px; height:1px; transform:translateY(-50%);}
+  .bidik::after{ left:50%; top:-14px; bottom:-14px; width:1px; transform:translateX(-50%);}
+
+  .eyebrow{
+    position:relative; z-index:2;
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.4em;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--emas);
+  }
+  .headline{
+    position:relative; z-index:2;
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:clamp(38px,8vw,84px);
+    line-height:0.98;
+    letter-spacing:0.01em;
+    margin:16px 0 10px;
+  }
+  .headline .aksen{ color:var(--merah); -webkit-text-stroke:1px var(--emas); }
+  .sub-hero{
+    position:relative; z-index:2;
+    font-size:15px;
+    color:rgba(251,246,233,0.65);
+    max-width:480px;
+    margin:0 auto;
+    line-height:1.7;
+  }
+
+  /* ===== NOMOR STEMPEL ===== */
+  .stempel-wrap{
+    position:relative; z-index:2;
+    display:flex; justify-content:center;
+    margin:34px 0 8px;
+  }
+  .stempel{
+    width:118px; height:118px;
+    border-radius:50%;
+    border:3px solid var(--merah);
+    outline:1px solid var(--emas);
+    outline-offset:6px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transform:rotate(-6deg);
+    background:rgba(192,39,45,0.08);
+  }
+  .stempel .no{
+    font-family:'Anton', sans-serif;
+    font-size:44px;
+    color:var(--kertas-terang);
+    line-height:1;
+  }
+  .stempel small{
+    font-family:'JetBrains Mono', monospace;
+    font-size:8.5px;
+    letter-spacing:0.2em;
+    color:var(--emas);
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ===== PASLON ===== */
+  .panggung{
+    position:relative; z-index:2;
+    max-width:940px;
+    margin:26px auto 0;
+    padding:0 20px 60px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+  }
+  .kartu{
+    background:var(--kertas-terang);
+    color:var(--hitam);
+    border-radius:2px;
+    padding:0 0 22px;
+    text-align:center;
+    box-shadow:0 18px 40px rgba(0,0,0,0.35);
+    position:relative;
+  }
+  .pita{
+    background:var(--merah);
+    color:var(--kertas-terang);
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    padding:9px 0;
+  }
+  .foto-bingkai{
+    width:100%;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    position:relative;
+    background:var(--hitam);
+  }
+  .foto-bingkai img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    image-rendering:auto;
+  }
+  .foto-bingkai::after{
+    content:"";
+    position:absolute; inset:0;
+    box-shadow:inset 0 -60px 50px -30px rgba(0,0,0,0.55);
+  }
+  .target-mini{
+    position:absolute;
+    width:46px; height:46px;
+    border:2px solid var(--merah);
+    border-radius:50%;
+    top:14px; right:14px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(251,246,233,0.85);
+  }
+  .target-mini::before{
+    content:"";
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--merah);
+  }
+  .nama-calon{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:23px;
+    letter-spacing:0.01em;
+    margin:20px 0 2px;
+  }
+  .jabatan-calon{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--merah-tua);
+  }
+
+  /* ===== VISI ===== */
+  .lembar{
+    max-width:760px;
+    margin:0 auto;
+    padding:54px 24px;
+    position:relative;
+  }
+  .lembar + .lembar{border-top:1px solid var(--garis);}
+  .label-lembar{
+    display:flex; align-items:center; gap:14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--merah-tua);
+    margin-bottom:24px;
+  }
+  .label-lembar .kotak{
+    width:8px; height:8px;
+    background:var(--merah);
+    flex-shrink:0;
+  }
+  .label-lembar::after{
+    content:"";
+    flex:1; height:1px;
+    background:var(--garis);
+  }
+  .visi-teks{
+    font-family:'Source Serif 4', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(20px,2.8vw,27px);
+    line-height:1.6;
+    color:var(--hitam);
+    position:relative;
+    padding-left:34px;
+  }
+  .visi-teks::before{
+    content:"\201C";
+    position:absolute; left:-6px; top:-22px;
+    font-family:'Anton', sans-serif;
+    font-style:normal;
+    font-size:90px;
+    color:rgba(192,39,45,0.18);
+  }
+
+  /* ===== MISI ===== */
+  .misi-list{
+    list-style:none; margin:0; padding:0;
+    counter-reset:misi;
+  }
+  .misi-list li{
+    counter-increment:misi;
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:18px;
+    padding:20px 0;
+    border-bottom:1px solid var(--garis);
+    align-items:start;
+  }
+  .misi-list li:first-child{border-top:1px solid var(--garis);}
+  .kotak-suara{
+    width:30px; height:30px;
+    border:2px solid var(--merah);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    font-weight:700;
+    color:var(--merah-tua);
+    margin-top:2px;
+  }
+  .kotak-suara::before{
+    content:counter(misi, decimal-leading-zero);
+  }
+  .misi-list p{
+    margin:0;
+    font-size:16.5px;
+    line-height:1.75;
+    color:#2a231a;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    text-align:center;
+    padding:46px 20px 54px;
+    background:var(--hitam);
+    color:rgba(251,246,233,0.55);
+  }
+  .seruan{
+    font-family:'Anton', sans-serif;
+    text-transform:uppercase;
+    font-size:clamp(22px,4vw,32px);
+    color:var(--kertas-terang);
+    letter-spacing:0.02em;
+    margin-bottom:10px;
+  }
+  .seruan .merah{color:var(--merah);}
+  footer .cap{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    margin-top:18px;
+  }
+  footer .cap .titik{color:var(--merah);}
+
+  @media (max-width:640px){
+    .panggung{grid-template-columns:1fr;}
+    .bidik{display:none;}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .kartu, .visi-teks, .misi-list li{
+      animation:muncul 0.6s ease both;
+    }
+    .kartu:nth-child(2){animation-delay:0.08s;}
+    .misi-list li:nth-child(2){animation-delay:0.05s;}
+    .misi-list li:nth-child(3){animation-delay:0.1s;}
+    .misi-list li:nth-child(4){animation-delay:0.15s;}
+    .misi-list li:nth-child(5){animation-delay:0.2s;}
+  }
+  @keyframes muncul{
+    from{opacity:0; transform:translateY(16px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+</style>
+</head>
+<body>
+
+<div class="instansi">
+  <span>MTsN 2 Pasuruan</span>
+  <span>Pemilu Paskibra Koranda &middot; 2026</span>
+</div>
+<div class="strip-bendera"></div>
+
+<section class="hero">
+  <div class="bidik b1"></div>
+  <div class="bidik b2"></div>
+  <div class="eyebrow">Pemilihan Ketua &amp; Wakil Ketua</div>
+  <h1 class="headline">Paskibra <span class="aksen">Koranda</span></h1>
+  <p class="sub-hero">Satu langkah, satu tekad &mdash; melangkah berani, memimpin dengan tanggung jawab, merawat regenerasi yang berintegritas.</p>
+
+  <div class="stempel-wrap">
+    <div class="stempel">
+      <span class="no">03</span>
+      <small>Paslon</small>
+    </div>
+  </div>
+
+  <div class="panggung">
+    <div class="kartu">
+      <div class="pita">Calon Ketua</div>
+      <div class="foto-bingkai">
+        <img src="https://cdn.phototourl.com/free/2026-08-27-6cdbeed6-75a6-4c90-8c4a-4e34303272ed.jpg" alt="Foto Calon Ketua Paskibra Koranda">
+        <div class="target-mini" aria-hidden="true"></div>
+      </div>
+      <p class="nama-calon">Putri Amanda S.</p>
+      <p class="jabatan-calon">Ketua Paskibra Koranda</p>
+    </div>
+
+    <div class="kartu">
+      <div class="pita">Calon Wakil Ketua</div>
+      <div class="foto-bingkai">
+        <img src="https://iili.io/Cm9kYlI.png" alt="Foto Calon Wakil Ketua Paskibra Koranda">
+        <div class="target-mini" aria-hidden="true"></div>
+      </div>
+      <p class="nama-calon">Muhamad Adityan S.</p>
+      <p class="jabatan-calon">Wakil Ketua Paskibra Koranda</p>
+    </div>
+  </div>
+</section>
+
+<section class="lembar">
+  <div class="label-lembar"><span class="kotak"></span>Visi</div>
+  <p class="visi-teks">
+    Menjadikan Paskibra sebagai ruang tumbuh bagi generasi yang berani melangkah, mampu memimpin, bertanggung jawab, dan siap melanjutkan perjuangan dengan membawa perubahan positif bagi Paskibra, sekolah, dan lingkungan sekitar, serta membentuk generasi yang solid, berkarakter, dan berintegritas.
+  </p>
+</section>
+
+<section class="lembar">
+  <div class="label-lembar"><span class="kotak"></span>Misi</div>
+  <ol class="misi-list">
+    <li><span class="kotak-suara"></span><p>Membangun keberanian dan rasa percaya diri anggota melalui kegiatan yang menumbuhkan kedisiplinan, ketegasan, dan kemampuan dalam mengambil keputusan.</p></li>
+    <li><span class="kotak-suara"></span><p>Menumbuhkan jiwa kepemimpinan dan rasa tanggung jawab agar setiap anggota mampu menjadi teladan serta siap mengambil peran dalam organisasi maupun lingkungan sekolah.</p></li>
+    <li><span class="kotak-suara"></span><p>Memperkuat solidaritas dan kekompakan antaranggota dengan menciptakan lingkungan Paskibra yang saling mendukung, menghargai, dan berkembang bersama.</p></li>
+    <li><span class="kotak-suara"></span><p>Mendorong anggota untuk aktif memberikan kontribusi dan menciptakan perubahan positif bagi Paskibra, sekolah, serta lingkungan sekitar.</p></li>
+    <li><span class="kotak-suara"></span><p>Mempersiapkan regenerasi Paskibra yang berkualitas agar nilai-nilai perjuangan, kedisiplinan, dan tanggung jawab dapat terus dilanjutkan dari generasi ke generasi.</p></li>
+  </ol>
+</section>
+
+<footer>
+  <p class="seruan">Coblos Nomor <span class="merah">03</span></p>
+  <p class="cap">MTsN 2 Pasuruan <span class="titik">&bull;</span> Paskibra Koranda <span class="titik">&bull;</span> Pemilu 2026</p>
+</footer>
+
+</body>
+</html>
